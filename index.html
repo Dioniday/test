@@ -2,231 +2,664 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Автосервис — Главная</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAG VOSTOK - Ремонт и обслуживание автомобилей VAG</title>
+    <meta name="description" content="Профессиональный ремонт и техническое обслуживание автомобилей Volkswagen, Audi, Skoda, SEAT, Porsche в Москве. Гарантия, запчасти, современное оборудование.">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Добавьте сюда favicon -->
+    <!-- <link rel="icon" href="/img/favicon.ico" type="image/x-icon"> -->
 </head>
 <body>
-  <!--#region header-->
-  <header class="header">
-    <div class="header__container">
-      <div class="header__left">
-        <a href="/" class="header__logo">
-          <!-- Используйте <img src="/img/logo-vag-vostok.svg" alt="VAG VOSTOK AUTO GROUP"> когда изображение будет доступно -->
-          <span class="header__logo-text">VAG VOSTOK</span>
-        </a>
-        <div class="header__rating">
-          <span class="header__rating-score">5.0</span>
-          <span class="header__rating-reviews">655 отзывов</span>
-          <a href="#" class="header__rating-yandex" aria-label="Яндекс рейтинг">
-            <img src="/img/icons/yandex.svg" alt="Яндекс" class="header__rating-yandex-icon">
-            <span>Яндекс 5.0</span>
-          </a>
+    <header class="header">
+        <div class="header__container container">
+            <div class="header__left">
+                <a href="/" class="header__logo logo">
+                    <img src="/img/logo-vag-vostok.svg" alt="VAG VOSTOK логотип" class="header__logo-img">
+                    <!-- <span class="header__logo-text">VAG VOSTOK</span> -->
+                </a>
+                <div class="header__rating">
+                    <a href="https://yandex.ru/maps/org/vag_vostok/..." target="_blank" rel="noopener noreferrer" class="header__rating-yandex">
+                        <img src="/img/icons/yandex-icon.svg" alt="Яндекс" class="header__rating-yandex-icon">
+                        <span>5.0 на Яндекс Картах</span>
+                    </a>
+                </div>
+            </div>
+            <div class="header__right">
+                <nav class="header__nav" id="main-nav">
+                    <ul class="header__menu menu">
+                        <li class="menu__item"><a href="#services" class="menu__link">Услуги</a></li>
+                        <li class="menu__item"><a href="#offers" class="menu__link">Акции</a></li>
+                        <li class="menu__item"><a href="/pages/cars.html" class="menu__link">Марки авто</a></li>
+                        <li class="menu__item"><a href="#about" class="menu__link">О нас</a></li>
+                        <li class="menu__item"><a href="#contacts" class="menu__link">Контакты</a></li>
+                    </ul>
+                </nav>
+                <a href="tel:+74951234567" class="header__phone phone">+7 (495) 123-45-67</a>
+                <button class="header__burger burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav" data-burger>
+                    <span class="burger__line"></span>
+                    <span class="burger__line"></span>
+                    <span class="burger__line"></span>
+                </button>
+            </div>
         </div>
-      </div>
-      <div class="header__right">
-        <nav class="header__nav" aria-label="Главное меню">
-          <ul class="header__menu">
-            <li class="header__menu-item"><a href="#services" class="header__menu-link is-active">Услуги</a></li>
-            <li class="header__menu-item"><a href="/pages/cars.html" class="header__menu-link">Автомобили</a></li>
-            <li class="header__menu-item"><a href="#about" class="header__menu-link">О компании</a></li>
-            <li class="header__menu-item"><a href="#contacts" class="header__menu-link">Контакты</a></li>
-          </ul>
-        </nav>
-        <a href="tel:+74950000000" class="header__phone">+7-495-000-00-00</a>
-        <button class="header__burger" type="button" data-burger aria-label="Открыть меню" aria-expanded="false">
-          <span class="header__burger-line"></span>
-          <span class="header__burger-line"></span>
-          <span class="header__burger-line"></span>
-        </button>
-      </div>
+    </header>
+
+    <main>
+        <section class="hero" style="background-image: url('/img/hero-main-bg.jpg');">
+            <div class="hero__background-overlay"></div>
+            <div class="hero__container container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Профессиональный ремонт и обслуживание автомобилей VAG группы в Москве</h1>
+                    <div class="hero__actions">
+                        <button type="button" class="hero__button-repair button button--primary" data-modal-open="calculator-modal">
+                            <svg class="button__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C11.4477 4 11 4.44772 11 5V7H5C4.44772 7 4 7.44772 4 8C4 8.55228 4.44772 9 5 9H7V11H4C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13H7V15H5C4.44772 15 4 15.4477 4 16C4 16.5523 4.44772 17 5 17H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V17H19C19.5523 17 20 16.5523 20 16C20 15.4477 19.5523 15 19 15H17V13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11H17V9H19C19.5523 9 20 8.55228 20 8C20 7.44772 19.5523 7 19 7H13V5C13 4.44772 12.5523 4 12 4ZM12 9H13V11H12V9ZM11 13H12V15H11V13Z" fill="currentColor"/></svg>
+                            Рассчитать стоимость ремонта
+                        </button>
+                        <a href="https://wa.me/79991234567" target="_blank" rel="noopener noreferrer" class="hero__button-whatsapp button button--outline">
+                            <svg class="button__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382C17.278 14.731 16.088 15.381 15.732 15.599C15.375 15.815 14.998 15.872 14.607 15.815C14.216 15.758 13.465 15.522 12.575 14.686C11.483 13.645 10.774 12.449 10.618 12.099C10.462 11.75 10.73 11.509 10.907 11.334C11.063 11.177 11.226 10.983 11.368 10.808C11.51 10.631 11.567 10.501 11.473 10.307C11.379 10.112 10.899 8.901 10.682 8.438C10.465 7.974 10.248 8.051 10.073 8.051C9.95804 8.05209 9.84423 8.06197 9.733 8.08C9.561 8.08 9.331 8.137 9.124 8.354C8.917 8.571 8.267 9.189 8.267 10.396C8.267 11.603 9.145 12.752 9.301 12.947C9.457 13.142 10.899 15.408 13.146 16.319C15.073 17.088 15.398 16.934 15.832 16.899C16.266 16.863 17.278 16.278 17.472 15.928C17.666 15.578 17.666 15.287 17.609 15.192C17.552 15.096 17.472 14.999 17.472 14.382Z" fill="currentColor"/><path d="M12.001 2.0023C6.478 2.0023 2 6.4803 2 12.0023C2 17.5253 6.478 22.0023 12.001 22.0023C17.523 22.0023 22 17.5253 22 12.0023C22 6.4803 17.523 2.0023 12.001 2.0023ZM12.001 20.0023C7.583 20.0023 4 16.4193 4 12.0023C4 7.5853 7.583 4.0023 12.001 4.0023C16.418 4.0023 20 7.5853 20 12.0023C20 16.4193 16.418 20.0023 12.001 20.0023Z" fill="currentColor"/></svg>
+                            Написать в WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__stats-container">
+                <div class="hero__stats container">
+                    <div class="hero__stat-item">
+                        <span class="hero__stat-value">10+</span>
+                        <span class="hero__stat-label">лет опыта</span>
+                    </div>
+                    <div class="hero__stat-item">
+                        <span class="hero__stat-value">5000+</span>
+                        <span class="hero__stat-label">довольных клиентов</span>
+                    </div>
+                    <div class="hero__stat-item">
+                        <span class="hero__stat-value">до 2 лет</span>
+                        <span class="hero__stat-label">гарантия на работы</span>
+                    </div>
+                    <div class="hero__stat-item hero__stat-item--contacts">
+                        <span class="hero__stat-value">Выгода до 30%</span>
+                        <span class="hero__stat-label">на запчасти VAG</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="brands section">
+            <div class="brands__container container">
+                <h2 class="brands__title section-title">Обслуживаем все популярные марки VAG и не только</h2>
+                <div class="brands__slider swiper-container" data-slider="brands-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide brands__slide"><img src="/img/brands/audi-logo.svg" alt="Audi"></div>
+                        <div class="swiper-slide brands__slide"><img src="/img/brands/vw-logo.svg" alt="Volkswagen"></div>
+                        <div class="swiper-slide brands__slide"><img src="/img/brands/skoda-logo.svg" alt="Skoda"></div>
+                        <div class="swiper-slide brands__slide"><img src="/img/brands/seat-logo.svg" alt="Seat"></div>
+                        <div class="swiper-slide brands__slide"><img src="/img/brands/porsche-logo.svg" alt="Porsche"></div>
+                        <div class="swiper-slide brands__slide"><img src="/img/brands/bmw-logo.svg" alt="BMW"></div>
+                        <div class="swiper-slide brands__slide"><img src="/img/brands/mercedes-logo.svg" alt="Mercedes-Benz"></div>
+                        <div class="swiper-slide brands__slide"><img src="/img/brands/mini-logo.svg" alt="Mini"></div>
+                        <div class="swiper-slide brands__slide"><img src="/img/brands/landrover-logo.svg" alt="Land Rover"></div>
+                    </div>
+                    <div class="swiper-button-prev brands-slider__button-prev"></div>
+                    <div class="swiper-button-next brands-slider__button-next"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="strengths section" id="strengths">
+            <div class="strengths__container container">
+                <h2 class="strengths__title section-title">Наши преимущества</h2>
+                <div class="strengths__grid">
+                    <div class="strength-card">
+                        <img src="/img/icons/strength-experience.svg" alt="Опыт" class="strength-card__icon">
+                        <h3 class="strength-card__title">Опыт более 10 лет</h3>
+                        <p class="strength-card__desc">Квалифицированные мастера с многолетним стажем работы с автомобилями VAG группы.</p>
+                    </div>
+                    <div class="strength-card">
+                        <img src="/img/icons/strength-guarantee.svg" alt="Гарантия" class="strength-card__icon">
+                        <h3 class="strength-card__title">Гарантия на работы</h3>
+                        <p class="strength-card__desc">Предоставляем официальную гарантию на все выполненные работы и установленные запчасти.</p>
+                    </div>
+                    <div class="strength-card">
+                        <img src="/img/icons/strength-equipment.svg" alt="Оборудование" class="strength-card__icon">
+                        <h3 class="strength-card__title">Современное оборудование</h3>
+                        <p class="strength-card__desc">Используем дилерское диагностическое оборудование и специализированный инструмент.</p>
+                    </div>
+                    <div class="strength-card">
+                        <img src="/img/icons/strength-prices.svg" alt="Цены" class="strength-card__icon">
+                        <h3 class="strength-card__title">Честные цены</h3>
+                        <p class="strength-card__desc">Прозрачное ценообразование без скрытых платежей и навязанных услуг. Согласование до начала работ.</p>
+                    </div>
+                    <div class="strength-card">
+                        <img src="/img/icons/strength-parts.svg" alt="Запчасти" class="strength-card__icon">
+                        <h3 class="strength-card__title">Запчасти в наличии</h3>
+                        <p class="strength-card__desc">Большой склад оригинальных и проверенных аналоговых запчастей для быстрого ремонта.</p>
+                    </div>
+                    <div class="strength-card">
+                        <img src="/img/icons/strength-comfort.svg" alt="Комфорт" class="strength-card__icon">
+                        <h3 class="strength-card__title">Удобство и комфорт</h3>
+                        <p class="strength-card__desc">Удобное расположение, комфортная зона ожидания с Wi-Fi и кофе. Запись на сервис онлайн.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services section" id="services">
+            <div class="services__container container">
+                <h2 class="services__title section-title">Наши услуги</h2>
+                <div class="services__tabs tabs" data-tabs="services-tabs">
+                    <div class="tabs__nav" role="tablist" aria-label="Категории услуг">
+                        <button class="tabs__button is-active" type="button" role="tab" aria-selected="true" aria-controls="tab-diagnostics" data-tab-target="#tab-diagnostics">Диагностика</button>
+                        <button class="tabs__button" type="button" role="tab" aria-selected="false" aria-controls="tab-repair" data-tab-target="#tab-repair">Ремонт</button>
+                        <button class="tabs__button" type="button" role="tab" aria-selected="false" aria-controls="tab-maintenance" data-tab-target="#tab-maintenance">Техобслуживание (ТО)</button>
+                        <button class="tabs__button" type="button" role="tab" aria-selected="false" aria-controls="tab-other" data-tab-target="#tab-other">Другие услуги</button>
+                    </div>
+                    <div class="tabs__content">
+                        <div class="tabs__panel is-active" id="tab-diagnostics" role="tabpanel" aria-labelledby="tab-diagnostics-button">
+                            <h3 class="tabs__panel-title">Диагностика автомобиля</h3>
+                            <div class="services__grid">
+                                <!-- Пример карточки услуги -->
+                                <div class="service-item">
+                                    <img src="/img/services/diag-engine.jpg" alt="Диагностика двигателя" class="service-item__image">
+                                    <h4 class="service-item__title">Компьютерная диагностика двигателя</h4>
+                                    <p class="service-item__price">от 1500 руб.</p>
+                                    <button type="button" class="service-item__button button button--outline-dark" data-modal-open="service-request-modal" data-service-name="Компьютерная диагностика двигателя">Записаться</button>
+                                </div>
+                                <div class="service-item">
+                                    <img src="/img/services/diag-chassis.jpg" alt="Диагностика ходовой" class="service-item__image">
+                                    <h4 class="service-item__title">Диагностика ходовой части</h4>
+                                    <p class="service-item__price">от 1200 руб.</p>
+                                    <button type="button" class="service-item__button button button--outline-dark" data-modal-open="service-request-modal" data-service-name="Диагностика ходовой части">Записаться</button>
+                                </div>
+                                <div class="service-item">
+                                    <img src="/img/services/diag-electro.jpg" alt="Диагностика электрики" class="service-item__image">
+                                    <h4 class="service-item__title">Диагностика автоэлектрики</h4>
+                                    <p class="service-item__price">от 1800 руб.</p>
+                                    <button type="button" class="service-item__button button button--outline-dark" data-modal-open="service-request-modal" data-service-name="Диагностика автоэлектрики">Записаться</button>
+                                </div>
+                                <div class="service-item">
+                                    <img src="/img/services/diag-endoscopy.jpg" alt="Эндоскопия двигателя" class="service-item__image">
+                                    <h4 class="service-item__title">Эндоскопия двигателя</h4>
+                                    <p class="service-item__price">от 3000 руб.</p>
+                                    <button type="button" class="service-item__button button button--outline-dark" data-modal-open="service-request-modal" data-service-name="Эндоскопия двигателя">Записаться</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabs__panel" id="tab-repair" role="tabpanel" aria-labelledby="tab-repair-button">
+                            <h3 class="tabs__panel-title">Ремонт автомобиля</h3>
+                            <div class="services__grid">
+                                <div class="service-item">
+                                    <img src="/img/services/repair-engine.jpg" alt="Ремонт двигателя" class="service-item__image">
+                                    <h4 class="service-item__title">Ремонт двигателя (бензин/дизель)</h4>
+                                    <p class="service-item__price">от 5000 руб.</p>
+                                    <button type="button" class="service-item__button button button--outline-dark" data-modal-open="service-request-modal" data-service-name="Ремонт двигателя">Записаться</button>
+                                </div>
+                                <div class="service-item">
+                                    <img src="/img/services/repair-dsg.jpg" alt="Ремонт DSG" class="service-item__image">
+                                    <h4 class="service-item__title">Ремонт коробок DSG / АКПП</h4>
+                                    <p class="service-item__price">от 8000 руб.</p>
+                                    <button type="button" class="service-item__button button button--outline-dark" data-modal-open="service-request-modal" data-service-name="Ремонт DSG/АКПП">Записаться</button>
+                                </div>
+                                <!-- Добавить другие услуги ремонта -->
+                            </div>
+                        </div>
+                        <div class="tabs__panel" id="tab-maintenance" role="tabpanel" aria-labelledby="tab-maintenance-button">
+                            <h3 class="tabs__panel-title">Техническое обслуживание (ТО)</h3>
+                            <div class="services__grid">
+                                <div class="service-item">
+                                    <img src="/img/services/to-oil.jpg" alt="Замена масла" class="service-item__image">
+                                    <h4 class="service-item__title">Замена масла и фильтров</h4>
+                                    <p class="service-item__price">от 2500 руб.</p>
+                                    <button type="button" class="service-item__button button button--outline-dark" data-modal-open="service-request-modal" data-service-name="Замена масла и фильтров">Записаться</button>
+                                </div>
+                                <!-- Добавить другие услуги ТО -->
+                            </div>
+                        </div>
+                        <div class="tabs__panel" id="tab-other" role="tabpanel" aria-labelledby="tab-other-button">
+                            <h3 class="tabs__panel-title">Другие популярные услуги</h3>
+                            <div class="services__grid">
+                                <div class="service-item">
+                                    <img src="/img/services/other-ac.jpg" alt="Заправка кондиционера" class="service-item__image">
+                                    <h4 class="service-item__title">Заправка и ремонт кондиционера</h4>
+                                    <p class="service-item__price">от 2000 руб.</p>
+                                    <button type="button" class="service-item__button button button--outline-dark" data-modal-open="service-request-modal" data-service-name="Заправка кондиционера">Записаться</button>
+                                </div>
+                                <div class="service-item">
+                                    <img src="/img/services/other-tyres.jpg" alt="Шиномонтаж" class="service-item__image">
+                                    <h4 class="service-item__title">Шиномонтаж и балансировка</h4>
+                                    <p class="service-item__price">от 2800 руб. за комплект</p>
+                                    <button type="button" class="service-item__button button button--outline-dark" data-modal-open="service-request-modal" data-service-name="Шиномонтаж">Записаться</button>
+                                </div>
+                                <!-- Добавить другие услуги -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="offers section section--dark" id="offers">
+            <div class="offers__container container">
+                <h2 class="offers__title section-title section-title--light">Акции и спецпредложения</h2>
+                <div class="offers__grid">
+                    <div class="offer-card">
+                        <img src="/img/offers/offer-diag.jpg" alt="Бесплатная диагностика" class="offer-card__image">
+                        <div class="offer-card__content">
+                            <h3 class="offer-card__title">Бесплатная диагностика ходовой при ремонте</h3>
+                            <p class="offer-card__desc">Приезжайте на ремонт ходовой и получите полную диагностику в подарок!</p>
+                            <div class="offer-card__timer" data-timer-deadline="2025-07-31T23:59:59">
+                                <span class="timer__item"><span class="timer__value" data-timer-days>00</span><span class="timer__label">дней</span></span>
+                                <span class="timer__item"><span class="timer__value" data-timer-hours>00</span><span class="timer__label">часов</span></span>
+                                <span class="timer__item"><span class="timer__value" data-timer-minutes>00</span><span class="timer__label">минут</span></span>
+                                <span class="timer__item"><span class="timer__value" data-timer-seconds>00</span><span class="timer__label">секунд</span></span>
+                            </div>
+                            <a href="#cta-form" class="offer-card__button button button--primary">Участвовать в акции</a>
+                        </div>
+                    </div>
+                    <div class="offer-card">
+                        <img src="/img/offers/offer-oil.jpg" alt="Скидка на замену масла" class="offer-card__image">
+                        <div class="offer-card__content">
+                            <h3 class="offer-card__title">Скидка 15% на замену масла + фильтр в подарок</h3>
+                            <p class="offer-card__desc">Только до конца месяца! Экономия на важном обслуживании.</p>
+                            <div class="offer-card__timer" data-timer-deadline="2025-06-30T23:59:59">
+                                <span class="timer__item"><span class="timer__value" data-timer-days>00</span><span class="timer__label">дней</span></span>
+                                <span class="timer__item"><span class="timer__value" data-timer-hours>00</span><span class="timer__label">часов</span></span>
+                                <span class="timer__item"><span class="timer__value" data-timer-minutes>00</span><span class="timer__label">минут</span></span>
+                                <span class="timer__item"><span class="timer__value" data-timer-seconds>00</span><span class="timer__label">секунд</span></span>
+                            </div>
+                            <a href="#cta-form" class="offer-card__button button button--primary">Получить скидку</a>
+                        </div>
+                    </div>
+                    <!-- Добавить еще карточки акций -->
+                </div>
+            </div>
+        </section>
+
+        <section class="about section" id="about">
+            <div class="about__container container">
+                <div class="about__content">
+                    <h2 class="about__title section-title">Автосервис, которому доверяют</h2>
+                    <p class="about__text">Мы — сертифицированный автосервис в Москве, где к каждой машине относятся с вниманием, а к каждому клиенту — с уважением. Уже более 10 лет мы специализируемся на ремонте и обслуживании автомобилей концерна VAG (Volkswagen, Audi, Skoda, SEAT, Porsche), а также других популярных марок.</p>
+                    <p class="about__text">Наша команда — это высококвалифицированные специалисты, прошедшие обучение и имеющие богатый опыт работы. Мы используем только современное дилерское оборудование и качественные запчасти, что позволяет нам гарантировать высокий уровень сервиса и долговечность результата.</p>
+                    <a href="#cta-form" class="about__button button button--primary">Записаться на сервис</a>
+                </div>
+                <div class="about__image-block">
+                    <img src="/img/about-us-image.jpg" alt="Интерьер автосервиса VAG VOSTOK" class="about__image">
+                    <div class="about__licenses">
+                        <h3 class="about__licenses-title">Лицензии и сертификаты</h3>
+                        <div class="about__licenses-grid">
+                            <a href="/img/licenses/license-1.jpg" data-fancybox="licenses"><img src="/img/licenses/license-1-thumb.jpg" alt="Сертификат соответствия"></a>
+                            <a href="/img/licenses/license-2.jpg" data-fancybox="licenses"><img src="/img/licenses/license-2-thumb.jpg" alt="Сертификат VAG"></a>
+                            <!-- Добавить еще лицензии -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews section section--light-gray" id="reviews">
+            <div class="reviews__container container">
+                <h2 class="reviews__title section-title">Отзывы наших клиентов</h2>
+                <div class="reviews__slider swiper-container" data-slider="reviews-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide review-card">
+                            <div class="review-card__header">
+                                <img src="/img/avatars/avatar-1.jpg" alt="Аватар клиента" class="review-card__avatar">
+                                <div class="review-card__author-info">
+                                    <h4 class="review-card__author-name">Александр П.</h4>
+                                    <p class="review-card__source">Volkswagen Tiguan, Яндекс Карты</p>
+                                </div>
+                            </div>
+                            <div class="review-card__rating">★★★★★</div>
+                            <p class="review-card__text">Отличный сервис! Быстро нашли причину неисправности и устранили. Цены адекватные, мастера знают свое дело. Рекомендую!</p>
+                        </div>
+                        <div class="swiper-slide review-card">
+                             <div class="review-card__header">
+                                <img src="/img/avatars/avatar-2.jpg" alt="Аватар клиента" class="review-card__avatar">
+                                <div class="review-card__author-info">
+                                    <h4 class="review-card__author-name">Мария Иванова</h4>
+                                    <p class="review-card__source">Skoda Octavia, Google Maps</p>
+                                </div>
+                            </div>
+                            <div class="review-card__rating">★★★★★</div>
+                            <p class="review-card__text">Приезжала на плановое ТО. Все сделали качественно и в срок. Очень приятный персонал, комфортная зона ожидания. Буду обращаться еще.</p>
+                        </div>
+                        <!-- Добавить еще отзывы -->
+                    </div>
+                    <div class="swiper-pagination reviews-slider__pagination"></div>
+                    <div class="swiper-button-prev reviews-slider__button-prev"></div>
+                    <div class="swiper-button-next reviews-slider__button-next"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-form section" id="cta-form" style="background-image: url('/img/cta-form-bg.jpg');">
+            <div class="cta-form__container container">
+                <div class="cta-form__content">
+                    <h2 class="cta-form__title section-title section-title--light">Давайте обсудим вашу машину?</h2>
+                    <p class="cta-form__subtitle">Оставьте заявку, и наш менеджер свяжется с вами в течение 15 минут для консультации и записи на сервис.</p>
+                    <form action="#" method="POST" class="form" data-form="cta-main">
+                        <div class="form__group">
+                            <input type="text" name="name" class="form__input" placeholder="Ваше имя" required aria-label="Ваше имя">
+                        </div>
+                        <div class="form__group">
+                            <input type="tel" name="phone" class="form__input" placeholder="Номер телефона" required aria-label="Номер телефона">
+                        </div>
+                        <div class="form__group">
+                            <input type="text" name="car_model" class="form__input" placeholder="Марка и модель автомобиля" aria-label="Марка и модель автомобиля">
+                        </div>
+                        <div class="form__group">
+                            <textarea name="description" class="form__textarea" placeholder="Кратко опишите проблему или желаемую услугу" aria-label="Описание проблемы"></textarea>
+                        </div>
+                        <button type="submit" class="form__submit button button--primary">Отправить заявку</button>
+                        <p class="form__agreement">Нажимая кнопку, вы даете согласие на <a href="/privacy-policy.html" target="_blank">обработку персональных данных</a>.</p>
+                    </form>
+                </div>
+                <div class="cta-form__image-wrap">
+                    <img src="/img/cta-form-car.png" alt="Автомобиль Audi" class="cta-form__image">
+                </div>
+            </div>
+        </section>
+
+        <section class="contacts section" id="contacts">
+            <div class="contacts__container container">
+                <div class="contacts__info">
+                    <h2 class="contacts__title section-title">Контакты</h2>
+                    <div class="contacts__item">
+                        <h3 class="contacts__item-title">Адрес:</h3>
+                        <p>г. Москва, ул. Автозаводская, д. 23, корп. 7</p>
+                        <p>(м. Автозаводская, рядом с ТТК)</p>
+                    </div>
+                    <div class="contacts__item">
+                        <h3 class="contacts__item-title">Телефон:</h3>
+                        <p><a href="tel:+74951234567" class="contacts__link">+7 (495) 123-45-67</a> (многоканальный)</p>
+                        <p><a href="https://wa.me/79991234567" target="_blank" rel="noopener noreferrer" class="contacts__link contacts__link--whatsapp">Написать в WhatsApp</a></p>
+                    </div>
+                    <div class="contacts__item">
+                        <h3 class="contacts__item-title">Email:</h3>
+                        <p><a href="mailto:info@vagvostok.ru" class="contacts__link">info@vagvostok.ru</a></p>
+                    </div>
+                    <div class="contacts__item">
+                        <h3 class="contacts__item-title">Время работы:</h3>
+                        <p>Ежедневно: с 09:00 до 21:00</p>
+                        <p>Без перерывов и выходных</p>
+                    </div>
+                    <div class="contacts__socials">
+                        <h3 class="contacts__item-title">Мы в соцсетях:</h3>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="VAG VOSTOK ВКонтакте"><img src="/img/icons/vk-color.svg" alt="VK"></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="VAG VOSTOK Telegram"><img src="/img/icons/telegram-color.svg" alt="Telegram"></a>
+                        <!-- <a href="#" target="_blank" rel="noopener noreferrer" aria-label="VAG VOSTOK Instagram"><img src="/img/icons/instagram-color.svg" alt="Instagram"></a> -->
+                    </div>
+                </div>
+                <div class="contacts__map">
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aba55c9f1481b1c4188738e0c8213684700291890d25965b2627f45901498080c&amp;source=constructor" width="100%" height="500" frameborder="0" title="Карта проезда VAG VOSTOK" aria-label="Карта Яндекс с расположением автосервиса VAG VOSTOK"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__info">
+                <a href="/" class="footer__logo logo">
+                    <img src="/img/logo-vag-vostok-footer.svg" alt="VAG VOSTOK логотип" class="footer__logo-img">
+                </a>
+                <div class="footer__rating">
+                     <a href="https://yandex.ru/maps/org/vag_vostok/..." target="_blank" rel="noopener noreferrer" class="footer__rating-yandex">
+                        <img src="/img/icons/yandex-icon-light.svg" alt="Яндекс" class="footer__rating-yandex-icon">
+                        <span>5.0 на Яндекс Картах</span>
+                    </a>
+                </div>
+                <p class="footer__copyright">&copy; 2015 – 2025 «VAG VOSTOK». Все права защищены.</p>
+            </div>
+            <div class="footer__nav-columns">
+                <div class="footer__nav-col">
+                    <h4 class="footer__nav-title">Услуги</h4>
+                    <ul class="footer__menu menu">
+                        <li class="menu__item"><a href="#services" data-tab-target="#tab-diagnostics" class="menu__link">Диагностика</a></li>
+                        <li class="menu__item"><a href="#services" data-tab-target="#tab-repair" class="menu__link">Ремонт ДВС и АКПП</a></li>
+                        <li class="menu__item"><a href="#services" data-tab-target="#tab-maintenance" class="menu__link">Техобслуживание</a></li>
+                        <li class="menu__item"><a href="/pages/services-all.html" class="menu__link">Все услуги</a></li>
+                    </ul>
+                </div>
+                <div class="footer__nav-col">
+                    <h4 class="footer__nav-title">О компании</h4>
+                    <ul class="footer__menu menu">
+                        <li class="menu__item"><a href="#about" class="menu__link">О нас</a></li>
+                        <li class="menu__item"><a href="#reviews" class="menu__link">Отзывы</a></li>
+                        <li class="menu__item"><a href="/pages/team.html" class="menu__link">Команда</a></li>
+                        <li class="menu__item"><a href="/pages/vacancies.html" class="menu__link">Вакансии</a></li>
+                    </ul>
+                </div>
+                <div class="footer__nav-col">
+                    <h4 class="footer__nav-title">Клиентам</h4>
+                    <ul class="footer__menu menu">
+                        <li class="menu__item"><a href="#offers" class="menu__link">Акции</a></li>
+                        <li class="menu__item"><a href="/pages/guarantee.html" class="menu__link">Гарантия</a></li>
+                        <li class="menu__item"><a href="/blog/" class="menu__link">Блог</a></li>
+                        <li class="menu__item"><a href="/privacy-policy.html" class="menu__link">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__contacts">
+                <h4 class="footer__nav-title">Свяжитесь с нами</h4>
+                <a href="tel:+74951234567" class="footer__phone phone">+7 (495) 123-45-67</a>
+                <a href="mailto:info@vagvostok.ru" class="footer__email">info@vagvostok.ru</a>
+                <p class="footer__address">г. Москва, ул. Автозаводская, д. 23, к.7</p>
+                <div class="footer__socials">
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="VAG VOSTOK ВКонтакте"><img src="/img/icons/vk-light.svg" alt="VK"></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="VAG VOSTOK Telegram"><img src="/img/icons/telegram-light.svg" alt="Telegram"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальные окна (пример) -->
+    <div class="modal" id="calculator-modal" aria-hidden="true" role="dialog" aria-labelledby="calculator-modal-title">
+        <div class="modal__overlay" tabindex="-1" data-modal-close>
+            <div class="modal__content" role="document">
+                <button class="modal__close" aria-label="Закрыть модальное окно" data-modal-close>&times;</button>
+                <h3 id="calculator-modal-title" class="modal__title">Калькулятор стоимости ремонта</h3>
+                <p>Здесь будет форма калькулятора...</p>
+                <!-- Добавить форму калькулятора -->
+            </div>
+        </div>
     </div>
-  </header>
-  <!--#endregion header-->
 
-  <main class="main">
-    <!--#region hero-->
-    <section class="hero hero--main">
-      <div class="hero__container">
-        <div class="hero__content">
-          <h1 class="hero__title">Специализированный сервис VAG, BMW, Mercedes-Benz</h1>
-          <p class="hero__subtitle">Диагностика, ремонт и техническое обслуживание с гарантией</p>
-          <div class="hero__actions">
-            <a href="#cta-form" class="button button--primary hero__button">Записаться на сервис</a>
-            <a href="#services" class="button button--outline hero__button">Наши услуги</a>
-          </div>
-        </div>
-        <div class="hero__image-wrapper">
-          <!-- <img src="/img/hero-main-bg.jpg" alt="Автосервис VAG VOSTOK" class="hero__image-bg"> -->
-          <!-- Фоновое изображение будет добавлено через CSS или <img> -->
-        </div>
-      </div>
-    </section>
-    <!--#endregion hero-->
-
-    <!--#region brands -->
-    <section class="brands-slider section">
-      <div class="container">
-        <h2 class="section__title visually-hidden">Ремонтируем автомобили следующих марок</h2>
-        <div class="brands-slider__container">
-          <!-- Здесь будет сам слайдер, пока просто список брендов -->
-          <ul class="brands-slider__list">
-            <li class="brands-slider__item">
-              <a href="#" class="brand-button" aria-label="Ремонт Audi">
-                <!-- <img src="/img/brands/audi.svg" alt="Audi" class="brand-button__logo"> -->
-                <span class="brand-button__name">Audi</span>
-              </a>
-            </li>
-            <li class="brands-slider__item">
-              <a href="#" class="brand-button" aria-label="Ремонт Skoda">
-                <!-- <img src="/img/brands/skoda.svg" alt="Skoda" class="brand-button__logo"> -->
-                <span class="brand-button__name">Skoda</span>
-              </a>
-            </li>
-            <li class="brands-slider__item">
-              <a href="#" class="brand-button" aria-label="Ремонт Volkswagen">
-                <!-- <img src="/img/brands/volkswagen.svg" alt="Volkswagen" class="brand-button__logo"> -->
-                <span class="brand-button__name">Volkswagen</span>
-              </a>
-            </li>
-            <li class="brands-slider__item">
-              <a href="#" class="brand-button" aria-label="Ремонт Seat">
-                <!-- <img src="/img/brands/seat.svg" alt="Seat" class="brand-button__logo"> -->
-                <span class="brand-button__name">Seat</span>
-              </a>
-            </li>
-            <!-- Можно добавить еще бренды, если есть на макете -->
-          </ul>
-          <!-- Элементы управления слайдером (стрелки), если нужны -->
-          <!-- <button class="slider-control slider-control--prev" aria-label="Предыдущий слайд"></button> -->
-          <!-- <button class="slider-control slider-control--next" aria-label="Следующий слайд"></button> -->
-        </div>
-      </div>
-    </section>
-    <!--#endregion brands -->
-
-    <!--#region services-->
-    <section class="services" id="services">
-      <div class="services__container">
-        <h2 class="services__title">Наши услуги</h2>
-        <div class="services__list">
-          <article class="service-card">
-            <img src="/img/service-1.svg" alt="Диагностика" class="service-card__icon">
-            <h3 class="service-card__title">Диагностика</h3>
-            <p class="service-card__desc">Современное оборудование и опытные мастера.</p>
-          </article>
-          <article class="service-card">
-            <img src="/img/service-2.svg" alt="Ремонт" class="service-card__icon">
-            <h3 class="service-card__title">Ремонт</h3>
-            <p class="service-card__desc">Выполним ремонт любой сложности с гарантией.</p>
-          </article>
-          <article class="service-card">
-            <img src="/img/service-3.svg" alt="ТО" class="service-card__icon">
-            <h3 class="service-card__title">Техническое обслуживание</h3>
-            <p class="service-card__desc">Плановое и внеплановое ТО для всех марок.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-    <!--#endregion services-->
-    <!--#region promos-->
-    <section class="promos" id="promos">
-      <div class="promos__container">
-        <h2 class="promos__title">Акции и спецпредложения</h2>
-        <div class="promos__list">
-          <article class="promo-card">
-            <h3 class="promo-card__title">Скидка 20% на первое ТО</h3>
-            <p class="promo-card__desc">Для новых клиентов — выгодное предложение на первое обслуживание.</p>
-            <span class="promo-card__label">до 30.06.2025</span>
-          </article>
-          <article class="promo-card">
-            <h3 class="promo-card__title">Бесплатная диагностика</h3>
-            <p class="promo-card__desc">При любом ремонте — диагностика в подарок.</p>
-            <span class="promo-card__label">до 31.07.2025</span>
-          </article>
-        </div>
-      </div>
-    </section>
-    <!--#endregion promos-->
-    <!--#region contacts-->
-    <section class="contacts" id="contacts">
-      <div class="contacts__container">
-        <h2 class="contacts__title">Контакты и запись</h2>
-        <div class="contacts__content">
-          <div class="contacts__info">
-            <p class="contacts__address">г. Москва, ул. Примерная, 1</p>
-            <a href="tel:+79999999999" class="contacts__phone">+7 (999) 999-99-99</a><br>
-            <a href="mailto:info@autoservice.ru" class="contacts__email">info@autoservice.ru</a>
-            <div class="contacts__map">
-              <!-- Здесь может быть карта (iframe или img) -->
-              <img src="/img/map-placeholder.png" alt="Карта проезда" class="contacts__map-img">
+    <div class="modal" id="service-request-modal" aria-hidden="true" role="dialog" aria-labelledby="service-request-modal-title">
+        <div class="modal__overlay" tabindex="-1" data-modal-close>
+            <div class="modal__content" role="document">
+                <button class="modal__close" aria-label="Закрыть модальное окно" data-modal-close>&times;</button>
+                <h3 id="service-request-modal-title" class="modal__title">Заявка на услугу</h3>
+                <form action="#" method="POST" class="form" data-form="service-request">
+                    <input type="hidden" name="service_name" value="">
+                    <div class="form__group">
+                        <input type="text" name="name" class="form__input" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form__group">
+                        <input type="tel" name="phone" class="form__input" placeholder="Номер телефона" required>
+                    </div>
+                    <button type="submit" class="form__submit button button--primary">Отправить заявку</button>
+                </form>
             </div>
-          </div>
-          <form class="contacts__form" data-form="contact">
-            <div class="contacts__form-group">
-              <input type="text" class="contacts__input" placeholder="Ваше имя" required>
-            </div>
-            <div class="contacts__form-group">
-              <input type="tel" class="contacts__input" placeholder="Телефон" required>
-            </div>
-            <div class="contacts__form-group">
-              <textarea class="contacts__input" placeholder="Комментарий"></textarea>
-            </div>
-            <button type="submit" class="button button--primary contacts__submit">Отправить</button>
-            <div class="contacts__form-message"></div>
-          </form>
         </div>
-      </div>
-    </section>
-    <!--#endregion contacts-->
-    <!--#region brands-slider -->
-    <section class="brands-slider">
-      <div class="brands-slider__container">
-        <h2 class="visually-hidden">Обслуживаемые марки автомобилей</h2>
-        <div class="brands-slider__wrapper"> <!-- Для свайпера или другой реализации слайдера -->
-          <div class="brands-slider__item"><img src="/img/brands/audi.svg" alt="Audi"></div>
-          <div class="brands-slider__item"><img src="/img/brands/bmw.svg" alt="BMW"></div>
-          <div class="brands-slider__item"><img src="/img/brands/mercedes.svg" alt="Mercedes-Benz"></div>
-          <div class="brands-slider__item"><img src="/img/brands/porsche.svg" alt="Porsche"></div>
-          <div class="brands-slider__item"><img src="/img/brands/skoda.svg" alt="Skoda"></div>
-          <div class="brands-slider__item"><img src="/img/brands/volkswagen.svg" alt="Volkswagen"></div>
-          <!-- Можно добавить больше логотипов -->
-        </div>
-      </div>
-    </section>
-    <!--#endregion brands-slider -->
-    <!-- Здесь будут другие секции главной страницы -->
-  </main>
-
-  <!--#region footer-->
-  <footer class="footer">
-    <div class="footer__container">
-      <div class="footer__info">
-        <a href="/" class="footer__logo">
-          <img src="/img/logo.svg" alt="Автосервис" class="footer__logo-img">
-        </a>
-        <p class="footer__copyright">© 2025 Автосервис. Все права защищены.</p>
-      </div>
-      <nav class="footer__nav" aria-label="Меню в подвале">
-        <ul class="footer__menu">
-          <li class="footer__menu-item"><a href="/" class="footer__menu-link">Главная</a></li>
-          <li class="footer__menu-item"><a href="/pages/cars.html" class="footer__menu-link">Машины</a></li>
-          <li class="footer__menu-item"><a href="/pages/promos.html" class="footer__menu-link">Акции</a></li>
-          <li class="footer__menu-item"><a href="#contacts" class="footer__menu-link">Контакты</a></li>
-        </ul>
-      </nav>
-      <div class="footer__contacts">
-        <a href="tel:+79999999999" class="footer__phone">+7 (999) 999-99-99</a>
-        <a href="mailto:info@autoservice.ru" class="footer__email">info@autoservice.ru</a>
-      </div>
     </div>
-  </footer>
-  <!--#endregion footer-->
 
-  <script src="/js/main.js"></script>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/js/main.js" defer></script>
+
+    <!-- Встроенный JS для инициализации (позже можно перенести в main.js) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Burger menu
+            const burger = document.querySelector('[data-burger]');
+            const nav = document.querySelector('#main-nav');
+            if (burger && nav) {
+                burger.addEventListener('click', () => {
+                    burger.classList.toggle('is-active');
+                    nav.classList.toggle('is-active');
+                    document.body.classList.toggle('no-scroll'); // Опционально, для блокировки скролла
+                    if (nav.classList.contains('is-active')) {
+                        burger.setAttribute('aria-expanded', 'true');
+                        burger.setAttribute('aria-label', 'Закрыть меню');
+                    } else {
+                        burger.setAttribute('aria-expanded', 'false');
+                        burger.setAttribute('aria-label', 'Открыть меню');
+                    }
+                });
+            }
+
+            // Sliders
+            if (document.querySelector('[data-slider="brands-slider"]')) {
+                new Swiper('[data-slider="brands-slider"]', {
+                    loop: true,
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                    navigation: {
+                        nextEl: '.brands-slider__button-next',
+                        prevEl: '.brands-slider__button-prev',
+                    },
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    breakpoints: {
+                        768: { slidesPerView: 4, spaceBetween: 20 },
+                        1024: { slidesPerView: 6, spaceBetween: 30 },
+                    }
+                });
+            }
+
+            if (document.querySelector('[data-slider="reviews-slider"]')) {
+                new Swiper('[data-slider="reviews-slider"]', {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    navigation: {
+                        nextEl: '.reviews-slider__button-next',
+                        prevEl: '.reviews-slider__button-prev',
+                    },
+                    pagination: {
+                        el: '.reviews-slider__pagination',
+                        clickable: true,
+                    },
+                     autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    breakpoints: {
+                        768: { slidesPerView: 2 },
+                        // 1024: { slidesPerView: 3 }, // Если нужно 3 отзыва
+                    }
+                });
+            }
+
+            // Tabs
+            const tabsContainers = document.querySelectorAll('[data-tabs]');
+            tabsContainers.forEach(tabsContainer => {
+                const tabButtons = tabsContainer.querySelectorAll('[data-tab-target]');
+                const tabPanels = tabsContainer.querySelectorAll('.tabs__panel');
+
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const targetPanelId = button.dataset.tabTarget;
+                        
+                        tabButtons.forEach(btn => {
+                            btn.classList.remove('is-active');
+                            btn.setAttribute('aria-selected', 'false');
+                        });
+                        button.classList.add('is-active');
+                        button.setAttribute('aria-selected', 'true');
+
+                        tabPanels.forEach(panel => {
+                            if ('#' + panel.id === targetPanelId) {
+                                panel.classList.add('is-active');
+                            } else {
+                                panel.classList.remove('is-active');
+                            }
+                        });
+                    });
+                });
+            });
+
+            // Countdown Timers
+            document.querySelectorAll('[data-timer-deadline]').forEach(timerBlock => {
+                const deadline = new Date(timerBlock.dataset.timerDeadline).getTime();
+                const daysEl = timerBlock.querySelector('[data-timer-days]');
+                const hoursEl = timerBlock.querySelector('[data-timer-hours]');
+                const minutesEl = timerBlock.querySelector('[data-timer-minutes]');
+                const secondsEl = timerBlock.querySelector('[data-timer-seconds]');
+
+                if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+                function updateTimer() {
+                    const now = new Date().getTime();
+                    const distance = deadline - now;
+
+                    if (distance < 0) {
+                        timerBlock.innerHTML = "<p>Акция завершена</p>";
+                        clearInterval(interval);
+                        return;
+                    }
+
+                    daysEl.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                    hoursEl.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                    minutesEl.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                    secondsEl.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                }
+                const interval = setInterval(updateTimer, 1000);
+                updateTimer();
+            });
+
+            // Modal windows (basic implementation)
+            const modalOpenButtons = document.querySelectorAll('[data-modal-open]');
+            const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
+
+            modalOpenButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.dataset.modalOpen;
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.setAttribute('aria-hidden', 'false');
+                        document.body.classList.add('no-scroll');
+                        // Если это модальное окно для заявки на услугу, передаем название услуги
+                        if (modalId === 'service-request-modal' && button.dataset.serviceName) {
+                            const serviceNameInput = modal.querySelector('input[name="service_name"]');
+                            if (serviceNameInput) {
+                                serviceNameInput.value = button.dataset.serviceName;
+                            }
+                            const modalTitle = modal.querySelector('.modal__title');
+                            if (modalTitle) {
+                                modalTitle.textContent = `Заявка на услугу: ${button.dataset.serviceName}`;
+                            }
+                        }
+                    }
+                });
+            });
+
+            function closeModal(modal) {
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('no-scroll');
+            }
+
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    if (modal) closeModal(modal);
+                });
+            });
+            
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    document.querySelectorAll('.modal[aria-hidden="false"]').forEach(closeModal);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
