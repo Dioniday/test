@@ -1,0 +1,30 @@
+<!-- Секция "Контакты" для главной. Семантика, БЭМ, форма с data-form. -->
+<section class="contacts" id="contacts">
+  <div class="contacts__container">
+    <h2 class="contacts__title">Контакты и запись</h2>
+    <div class="contacts__content">
+      <div class="contacts__info">
+        <p class="contacts__address">г. Москва, ул. Примерная, 1</p>
+        <a href="tel:+79999999999" class="contacts__phone">+7 (999) 999-99-99</a><br>
+        <a href="mailto:info@autoservice.ru" class="contacts__email">info@autoservice.ru</a>
+        <div class="contacts__map">
+          <!-- Здесь может быть карта (iframe или img) -->
+          <img src="/img/map-placeholder.png" alt="Карта проезда" class="contacts__map-img">
+        </div>
+      </div>
+      <form class="contacts__form" data-form="contact">
+        <div class="contacts__form-group">
+          <input type="text" class="contacts__input" placeholder="Ваше имя" required>
+        </div>
+        <div class="contacts__form-group">
+          <input type="tel" class="contacts__input" placeholder="Телефон" required>
+        </div>
+        <div class="contacts__form-group">
+          <textarea class="contacts__input" placeholder="Комментарий"></textarea>
+        </div>
+        <button type="submit" class="button button--primary contacts__submit">Отправить</button>
+        <div class="contacts__form-message"></div>
+      </form>
+    </div>
+  </div>
+</section>

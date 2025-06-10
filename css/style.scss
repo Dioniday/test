@@ -1,0 +1,462 @@
+/* Основные стили для проекта. Используйте SCSS синтаксис, если потребуется. */
+
+:root {
+  --font-main: 'Inter', Arial, sans-serif;
+  --color-primary: #1a1a1a;
+  --color-accent: #e30613;
+  --color-bg: #fff;
+  --color-text: #222;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background: var(--color-bg);
+  margin: 0;
+  padding: 0;
+}
+
+// Базовые брейкпоинты
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 767px) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1199px) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1200px) { @content; }
+  }
+}
+
+// Пример использования миксина
+// .block {
+//   @include respond(mobile) {
+//     ...
+//   }
+// }
+
+/* Стили для header-компонента */
+.header {
+  background: var(--color-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.header__logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+.header__nav {
+  flex: 1 1 auto;
+  margin-left: 2rem;
+}
+.header__menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.header__menu-link {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.header__menu-link:hover,
+.header__menu-link.is-active {
+  color: var(--color-accent);
+}
+.header__burger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.header__burger-line {
+  width: 24px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  display: block;
+}
+
+// Мобильное меню
+@include respond(mobile) {
+  .header__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 1rem 0;
+  }
+  .header__nav.is-active {
+    display: block;
+  }
+  .header__menu {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-left: 1.5rem;
+  }
+  .header__burger {
+    display: flex;
+  }
+}
+
+/* Стили для footer-компонента */
+.footer {
+  background: #181818;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+  font-size: 1rem;
+}
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+.footer__info {
+  flex: 1 1 200px;
+}
+.footer__logo {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.footer__logo-img {
+  height: 32px;
+  width: auto;
+}
+.footer__copyright {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+.footer__nav {
+  flex: 1 1 200px;
+}
+.footer__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer__menu-link {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer__menu-link:hover {
+  color: var(--color-accent);
+}
+.footer__contacts {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer__phone,
+.footer__email {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer__phone:hover,
+.footer__email:hover {
+  color: var(--color-accent);
+}
+
+// Адаптивность
+@include respond(mobile) {
+  .footer__container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  .footer__info,
+  .footer__nav,
+  .footer__contacts {
+    flex: 1 1 100%;
+  }
+}
+
+/* Стили для hero-блока */
+.hero {
+  background: linear-gradient(90deg, #fff 60%, #f5f5f5 100%);
+  padding: 3rem 0 2rem 0;
+}
+.hero__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+.hero__content {
+  flex: 1 1 50%;
+}
+.hero__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: var(--color-primary);
+}
+.hero__subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+.hero__button {
+  margin-top: 1rem;
+}
+.hero__image {
+  flex: 1 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Кнопка
+.button {
+  display: inline-block;
+  padding: 0.75em 2em;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: #eee;
+  color: var(--color-primary);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.button--primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+.button--primary:hover,
+.button--primary:focus {
+  background: #b8000d;
+}
+
+// Адаптивность
+@include respond(mobile) {
+  .hero__container {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .hero__title {
+    font-size: 1.5rem;
+  }
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Стили для секции услуг и карточек */
+.services {
+  background: #f5f5f5;
+  padding: 3rem 0;
+}
+.services__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.services__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.services__list {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.service-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 320px;
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+.service-card:hover {
+  box-shadow: 0 4px 16px rgba(227,6,19,0.10);
+}
+.service-card__icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+.service-card__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.5rem 0;
+  color: var(--color-primary);
+}
+.service-card__desc {
+  font-size: 1rem;
+  color: #444;
+}
+
+// Адаптивность
+@include respond(mobile) {
+  .services__list {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .service-card {
+    max-width: 100%;
+  }
+}
+
+/* Стили для секции акций и карточек */
+.promos {
+  background: #fff;
+  padding: 3rem 0;
+}
+.promos__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.promos__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.promos__list {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.promo-card {
+  background: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 320px;
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+.promo-card:hover {
+  box-shadow: 0 4px 16px rgba(227,6,19,0.10);
+}
+.promo-card__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--color-primary);
+}
+.promo-card__desc {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+.promo-card__label {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.25em 0.75em;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+// Адаптивность
+@include respond(mobile) {
+  .promos__list {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .promo-card {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Стили для страницы акций (promos-page) */
+.promos-page {
+  background: #fff;
+  padding: 3rem 0;
+}
+.promos-page__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.promos-page__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.promos-page__list {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+// Переиспользуем promo-card из главной
+
+// Адаптивность
+@include respond(mobile) {
+  .promos-page__list {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}

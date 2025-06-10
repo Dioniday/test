@@ -1,0 +1,38 @@
+<!-- Шаблон страницы по машинам. Семантика, БЭМ, структура для будущей динамики. -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Автосервис — Машины</title>
+  <link rel="stylesheet" href="/css/style.scss">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!--#include file="/components/header.html" -->
+  <main class="main">
+    <section class="cars">
+      <div class="cars__container">
+        <h1 class="cars__title">Обслуживаемые марки и модели</h1>
+        <div class="cars__list">
+          <article class="car-card">
+            <img src="/img/car-bmw.png" alt="BMW" class="car-card__img">
+            <h2 class="car-card__title">BMW</h2>
+            <p class="car-card__desc">Полный спектр работ для BMW всех поколений.</p>
+          </article>
+          <article class="car-card">
+            <img src="/img/car-mercedes.png" alt="Mercedes-Benz" class="car-card__img">
+            <h2 class="car-card__title">Mercedes-Benz</h2>
+            <p class="car-card__desc">Диагностика, ремонт и ТО Mercedes.</p>
+          </article>
+          <!-- ...другие марки... -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <!--#include file="/components/footer.html" -->
+  <script src="/js/main.js"></script>
+</body>
+</html>

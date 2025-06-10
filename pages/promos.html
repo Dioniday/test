@@ -1,0 +1,38 @@
+<!-- Шаблон страницы по акциям. Семантика, БЭМ, структура для будущей динамики. -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Автосервис — Акции</title>
+  <link rel="stylesheet" href="/css/style.scss">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!--#include file="/components/header.html" -->
+  <main class="main">
+    <section class="promos-page">
+      <div class="promos-page__container">
+        <h1 class="promos-page__title">Актуальные акции</h1>
+        <div class="promos-page__list">
+          <article class="promo-card">
+            <h2 class="promo-card__title">Скидка 20% на первое ТО</h2>
+            <p class="promo-card__desc">Для новых клиентов — выгодное предложение на первое обслуживание.</p>
+            <span class="promo-card__label">до 30.06.2025</span>
+          </article>
+          <article class="promo-card">
+            <h2 class="promo-card__title">Бесплатная диагностика</h2>
+            <p class="promo-card__desc">При любом ремонте — диагностика в подарок.</p>
+            <span class="promo-card__label">до 31.07.2025</span>
+          </article>
+          <!-- ...другие акции... -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <!--#include file="/components/footer.html" -->
+  <script src="/js/main.js"></script>
+</body>
+</html>
