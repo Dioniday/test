@@ -5,17 +5,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Автосервис — Акции</title>
-  <link rel="stylesheet" href="/css/style.scss">
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!--#include file="/components/header.html" -->
+  <header class="header">
+    <div class="header__container">
+      <a href="/" class="header__logo">
+        <img src="/img/logo.svg" alt="Автосервис" class="header__logo-img">
+      </a>
+      <nav class="header__nav" aria-label="Главное меню">
+        <ul class="header__menu">
+          <li class="header__menu-item"><a href="/" class="header__menu-link">Главная</a></li>
+          <li class="header__menu-item"><a href="/pages/cars.html" class="header__menu-link">Машины</a></li>
+          <li class="header__menu-item"><a href="/pages/promos.html" class="header__menu-link is-active">Акции</a></li>
+          <li class="header__menu-item"><a href="#contacts" class="header__menu-link">Контакты</a></li>
+        </ul>
+      </nav>
+      <button class="header__burger" type="button" data-burger aria-label="Открыть меню">
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+      </button>
+    </div>
+  </header>
   <main class="main">
+    <section class="page-header">
+      <div class="page-header__container">
+        <h1 class="page-header__title">Актуальные акции</h1>
+      </div>
+    </section>
     <section class="promos-page">
       <div class="promos-page__container">
-        <h1 class="promos-page__title">Актуальные акции</h1>
         <div class="promos-page__list">
           <article class="promo-card">
             <h2 class="promo-card__title">Скидка 20% на первое ТО</h2>
@@ -27,12 +50,38 @@
             <p class="promo-card__desc">При любом ремонте — диагностика в подарок.</p>
             <span class="promo-card__label">до 31.07.2025</span>
           </article>
+          <article class="promo-card">
+            <h2 class="promo-card__title">Шиномонтаж в подарок</h2>
+            <p class="promo-card__desc">При покупке комплекта зимней резины.</p>
+            <span class="promo-card__label">до 30.09.2025</span>
+          </article>
           <!-- ...другие акции... -->
         </div>
       </div>
     </section>
   </main>
-  <!--#include file="/components/footer.html" -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__info">
+        <a href="/" class="footer__logo">
+          <img src="/img/logo.svg" alt="Автосервис" class="footer__logo-img">
+        </a>
+        <p class="footer__copyright">© 2025 Автосервис. Все права защищены.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Меню в подвале">
+        <ul class="footer__menu">
+          <li class="footer__menu-item"><a href="/" class="footer__menu-link">Главная</a></li>
+          <li class="footer__menu-item"><a href="/pages/cars.html" class="footer__menu-link">Машины</a></li>
+          <li class="footer__menu-item"><a href="/pages/promos.html" class="footer__menu-link is-active">Акции</a></li>
+          <li class="footer__menu-item"><a href="#contacts" class="footer__menu-link">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="footer__contacts">
+        <a href="tel:+79999999999" class="footer__phone">+7 (999) 999-99-99</a>
+        <a href="mailto:info@autoservice.ru" class="footer__email">info@autoservice.ru</a>
+      </div>
+    </div>
+  </footer>
   <script src="/js/main.js"></script>
 </body>
 </html>

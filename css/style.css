@@ -1,0 +1,772 @@
+// filepath: /workspaces/test/css/style.scss
+/* Основные стили для проекта. Используйте SCSS синтаксис, если потребуется. */
+
+:root {
+  --font-main: 'Inter', Arial, sans-serif;
+  --color-primary: #1a1a1a;
+  --color-accent: #e30613;
+  --color-bg: #fff;
+  --color-text: #222;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background: var(--color-bg);
+  margin: 0;
+  padding: 0;
+}
+
+// Базовые брейкпоинты
+/* @mixin respond($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 767px) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1199px) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1200px) { @content; }
+  }
+} */
+
+// Пример использования миксина
+// .block {
+//   @include respond(mobile) {
+//     ...
+//   }
+// }
+
+/* Стили для header-компонента */
+.header {
+  background: #1a1a1a; /* Темный фон для шапки */
+  color: #fff; /* Белый цвет текста по умолчанию */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.5rem 0; /* Небольшой вертикальный паддинг */
+}
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.header__left {
+  display: flex;
+  flex-direction: column; /* Лого и рейтинг друг под другом */
+  align-items: flex-start;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff; /* Цвет логотипа */
+  font-weight: bold;
+  font-size: 1.5rem; /* Размер для текстового лого */
+}
+.header__logo-text {
+  /* Стили для текстового лого, если изображение недоступно */
+}
+.header__logo-img {
+  height: 40px; /* или другая высота согласно макету */
+  width: auto;
+  display: block;
+}
+
+.header__rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #ccc; /* Цвет для рейтинга */
+  margin-top: 0.25rem;
+}
+.header__rating-yandex {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #ccc;
+  text-decoration: none;
+}
+.header__rating-yandex-icon {
+  height: 12px; /* Размер иконки Яндекса */
+  width: auto;
+}
+.header__rating-yandex:hover {
+  color: #fff;
+}
+
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Пространство между элементами в правой части */
+}
+
+.header__nav {
+  /* flex: 1 1 auto; */ /* Убрано, чтобы не растягивать */
+  /* margin-left: 2rem; */ /* Убрано */
+}
+.header__menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.header__menu-link {
+  color: #fff; /* Белый цвет ссылок */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: 0.5rem 0;
+}
+.header__menu-link:hover,
+.header__menu-link.is-active {
+  color: var(--color-accent); /* Акцентный цвет для активной/ховер ссылки */
+}
+
+.header__phone {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  white-space: nowrap; /* Чтобы телефон не переносился */
+}
+.header__phone:hover {
+  color: var(--color-accent);
+}
+
+.header__burger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.header__burger-line {
+  width: 24px;
+  height: 3px;
+  background: #fff; /* Белые линии для бургера */
+  border-radius: 2px;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Стили для активного состояния бургера (крестик) */
+.header__burger.is-active .header__burger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.header__burger.is-active .header__burger-line:nth-child(2) {
+  opacity: 0;
+}
+.header__burger.is-active .header__burger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+// Мобильное меню
+@media (max-width: 991px) { /* Изменен брейкпоинт для более раннего появления бургера */
+  .header__nav {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    right: 0;
+    background: #1a1a1a; /* Темный фон для мобильного меню */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 1rem 0;
+    border-top: 1px solid #333; /* Разделитель */
+  }
+  .header__nav.is-active {
+    display: block;
+  }
+  .header__menu {
+    flex-direction: column;
+    gap: 0.5rem; /* Уменьшен гэп */
+    align-items: flex-start; /* Выравнивание по левому краю */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .header__menu-item {
+    width: 100%; /* Чтобы ссылки занимали всю ширину */
+  }
+  .header__menu-link {
+    padding: 0.75rem 0; /* Увеличен паддинг для удобства нажатия */
+    display: block; /* Чтобы занимали всю ширину */
+    border-bottom: 1px solid #333; /* Разделители между пунктами */
+  }
+  .header__menu-item:last-child .header__menu-link {
+    border-bottom: none;
+  }
+  .header__burger {
+    display: flex;
+  }
+  .header__phone {
+    display: none; /* Скрываем телефон в правой части, т.к. бургер уже там */
+  }
+  .header__right {
+    gap: 1rem; /* Уменьшаем гэп, т.к. телефон скрыт */
+  }
+}
+
+@media (max-width: 767px) {
+  .header__left {
+    /* Можно добавить стили для мобильного вида левой части, если нужно */
+  }
+  .header__rating {
+    font-size: 0.7rem; /* Мельче рейтинг на совсем маленьких экранах */
+    gap: 0.3rem;
+  }
+  .header__logo {
+    font-size: 1.2rem;
+  }
+   .header__phone {
+    /* Если нужно показать телефон где-то еще на мобильных, можно переопределить */
+  }
+}
+
+
+/* Стили для footer-компонента */
+.footer {
+  background: #181818;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+  font-size: 1rem;
+}
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+.footer__info {
+  flex: 1 1 200px;
+}
+.footer__logo {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.footer__logo-img {
+  height: 32px;
+  width: auto;
+}
+.footer__copyright {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+.footer__nav {
+  flex: 1 1 200px;
+}
+.footer__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer__menu-link {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer__menu-link:hover {
+  color: var(--color-accent);
+}
+.footer__contacts {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer__phone,
+.footer__email {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer__phone:hover,
+.footer__email:hover {
+  color: var(--color-accent);
+}
+
+// Адаптивность
+@media (max-width: 767px) {
+  .footer__container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  .footer__info,
+  .footer__nav,
+  .footer__contacts {
+    flex: 1 1 100%;
+  }
+}
+
+/* Стили для hero-блока */
+.hero {
+  background: linear-gradient(90deg, #fff 60%, #f5f5f5 100%);
+  padding: 3rem 0 2rem 0;
+}
+.hero__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+.hero__content {
+  flex: 1 1 50%;
+}
+.hero__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: var(--color-primary);
+}
+.hero__subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+.hero__button {
+  margin-top: 1rem;
+}
+.hero__image {
+  flex: 1 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Кнопка
+.button {
+  display: inline-block;
+  padding: 0.75em 2em;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: #eee;
+  color: var(--color-primary);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.button--primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+.button--primary:hover,
+.button--primary:focus {
+  background: #b8000d;
+}
+
+// Адаптивность
+@media (max-width: 767px) {
+  .hero__container {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .hero__title {
+    font-size: 1.5rem;
+  }
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Стили для секции услуг и карточек */
+.services {
+  background: #f5f5f5;
+  padding: 3rem 0;
+}
+.services__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.services__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.services__list {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.service-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 320px;
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+.service-card:hover {
+  box-shadow: 0 4px 16px rgba(227,6,19,0.10);
+}
+.service-card__icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+.service-card__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.5rem 0;
+  color: var(--color-primary);
+}
+.service-card__desc {
+  font-size: 1rem;
+  color: #444;
+}
+
+// Адаптивность
+@media (max-width: 767px) {
+  .services__list {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .service-card {
+    max-width: 100%;
+  }
+}
+
+/* Стили для секции акций и карточек */
+.promos {
+  background: #fff;
+  padding: 3rem 0;
+}
+.promos__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.promos__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.promos__list {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.promo-card {
+  background: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 320px;
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+.promo-card:hover {
+  box-shadow: 0 4px 16px rgba(227,6,19,0.10);
+}
+.promo-card__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--color-primary);
+}
+.promo-card__desc {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+.promo-card__label {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.25em 0.75em;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+// Адаптивность
+@media (max-width: 767px) {
+  .promos__list {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .promo-card {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Стили для страницы акций (promos-page) */
+.promos-page {
+  background: #fff;
+  padding: 3rem 0;
+}
+.promos-page__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.promos-page__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.promos-page__list {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+// Переиспользуем promo-card из главной
+
+// Адаптивность
+@media (max-width: 767px) {
+  .promos-page__list {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}
+
+/* Стили для секции контактов */
+.contacts {
+  background: #f5f5f5;
+  padding: 3rem 0;
+}
+.contacts__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.contacts__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.contacts__content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.contacts__info {
+  flex: 1 1 400px;
+}
+.contacts__address,
+.contacts__phone,
+.contacts__email {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.contacts__phone:hover,
+.contacts__email:hover {
+  color: var(--color-accent);
+}
+.contacts__map {
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #e0e0e0; /* Placeholder background */
+  height: 300px; /* Adjust as needed */
+}
+.contacts__map-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.contacts__form {
+  flex: 1 1 400px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.contacts__form-group {
+  margin-bottom: 1rem;
+}
+.contacts__input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.contacts__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(227,6,19,0.2);
+}
+.contacts__submit {
+  width: 100%;
+}
+.contacts__form-message {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-accent);
+}
+
+// Адаптивность
+@media (max-width: 767px) {
+  .contacts__content {
+    flex-direction: column;
+  }
+}
+
+/* Дополнительные стили для страниц cars.html и promos.html */
+/* Общие стили для внутренних страниц */
+.page-header {
+  background: #f5f5f5;
+  padding: 2rem 0;
+  text-align: center;
+}
+.page-header__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+/* Стили для страницы машин (cars-page) */
+.cars-page {
+  padding: 3rem 0;
+}
+.cars-page__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.cars-page__title { /* Уже есть .page-header__title, можно его использовать или этот, если нужен другой стиль */
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+.cars-page__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.car-card { /* Пример карточки для машины */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.car-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.car-card__image {
+  width: 100%;
+  height: 200px; /* Примерная высота */
+  object-fit: cover;
+  display: block;
+}
+.car-card__content {
+  padding: 1.5rem;
+}
+.car-card__title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--color-primary);
+}
+.car-card__desc {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+.car-card__button {
+  font-size: 1rem;
+}
+
+// Адаптивность для страницы машин
+@media (max-width: 767px) {
+  .cars-page__list {
+    grid-template-columns: 1fr; /* Одна колонка на мобильных */
+    gap: 1.5rem;
+  }
+  .page-header__title {
+    font-size: 2rem;
+  }
+}
+
+/* Стили для страницы акций (promos-page) - уже есть выше, но можно дополнить */
+/* .promos-page { ... } */
+/* .promos-page__container { ... } */
+/* .promos-page__title { ... } */
+/* .promos-page__list { ... } */
+/* Используются те же .promo-card, что и на главной */
+
+/* Состояния :hover, .is-active, .is-error */
+/* .is-active уже используется в .header__menu-link и .header__nav */
+
+.button:hover {
+  /* Общий ховер для кнопок, если не переопределен */
+  background: #ddd;
+}
+.button--primary:hover,
+.button--primary:focus {
+  background: #b8000d; /* Уже определено */
+}
+
+.contacts__input.is-error {
+  border-color: var(--color-accent);
+  background-color: #fff5f5;
+}
+.contacts__input.is-error:focus {
+  box-shadow: 0 0 0 2px rgba(227,6,19,0.3);
+}
+
+/* Убедимся, что все пути к шрифтам и изображениям корректны */
+/* Шрифты подключены через Google Fonts в HTML */
+/* Иконки SVG - пути должны быть вида /img/icon-name.svg или /img/icons/sprite.svg#icon-id */
