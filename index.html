@@ -50,19 +50,65 @@
 
   <main class="main">
     <!--#region hero-->
-    <section class="hero">
+    <section class="hero hero--main">
       <div class="hero__container">
         <div class="hero__content">
-          <h1 class="hero__title">Профессиональный автосервис<br>для вашего автомобиля</h1>
-          <p class="hero__subtitle">Обслуживание, ремонт и диагностика — быстро, качественно, с гарантией.</p>
-          <a href="#services" class="button button--primary hero__button">Записаться онлайн</a>
+          <h1 class="hero__title">Специализированный сервис VAG, BMW, Mercedes-Benz</h1>
+          <p class="hero__subtitle">Диагностика, ремонт и техническое обслуживание с гарантией</p>
+          <div class="hero__actions">
+            <a href="#cta-form" class="button button--primary hero__button">Записаться на сервис</a>
+            <a href="#services" class="button button--outline hero__button">Наши услуги</a>
+          </div>
         </div>
-        <div class="hero__image">
-          <img src="/img/hero-car.png" alt="Автомобиль" class="hero__img">
+        <div class="hero__image-wrapper">
+          <!-- <img src="/img/hero-main-bg.jpg" alt="Автосервис VAG VOSTOK" class="hero__image-bg"> -->
+          <!-- Фоновое изображение будет добавлено через CSS или <img> -->
         </div>
       </div>
     </section>
     <!--#endregion hero-->
+
+    <!--#region brands -->
+    <section class="brands-slider section">
+      <div class="container">
+        <h2 class="section__title visually-hidden">Ремонтируем автомобили следующих марок</h2>
+        <div class="brands-slider__container">
+          <!-- Здесь будет сам слайдер, пока просто список брендов -->
+          <ul class="brands-slider__list">
+            <li class="brands-slider__item">
+              <a href="#" class="brand-button" aria-label="Ремонт Audi">
+                <!-- <img src="/img/brands/audi.svg" alt="Audi" class="brand-button__logo"> -->
+                <span class="brand-button__name">Audi</span>
+              </a>
+            </li>
+            <li class="brands-slider__item">
+              <a href="#" class="brand-button" aria-label="Ремонт Skoda">
+                <!-- <img src="/img/brands/skoda.svg" alt="Skoda" class="brand-button__logo"> -->
+                <span class="brand-button__name">Skoda</span>
+              </a>
+            </li>
+            <li class="brands-slider__item">
+              <a href="#" class="brand-button" aria-label="Ремонт Volkswagen">
+                <!-- <img src="/img/brands/volkswagen.svg" alt="Volkswagen" class="brand-button__logo"> -->
+                <span class="brand-button__name">Volkswagen</span>
+              </a>
+            </li>
+            <li class="brands-slider__item">
+              <a href="#" class="brand-button" aria-label="Ремонт Seat">
+                <!-- <img src="/img/brands/seat.svg" alt="Seat" class="brand-button__logo"> -->
+                <span class="brand-button__name">Seat</span>
+              </a>
+            </li>
+            <!-- Можно добавить еще бренды, если есть на макете -->
+          </ul>
+          <!-- Элементы управления слайдером (стрелки), если нужны -->
+          <!-- <button class="slider-control slider-control--prev" aria-label="Предыдущий слайд"></button> -->
+          <!-- <button class="slider-control slider-control--next" aria-label="Следующий слайд"></button> -->
+        </div>
+      </div>
+    </section>
+    <!--#endregion brands -->
+
     <!--#region services-->
     <section class="services" id="services">
       <div class="services__container">
@@ -137,6 +183,22 @@
       </div>
     </section>
     <!--#endregion contacts-->
+    <!--#region brands-slider -->
+    <section class="brands-slider">
+      <div class="brands-slider__container">
+        <h2 class="visually-hidden">Обслуживаемые марки автомобилей</h2>
+        <div class="brands-slider__wrapper"> <!-- Для свайпера или другой реализации слайдера -->
+          <div class="brands-slider__item"><img src="/img/brands/audi.svg" alt="Audi"></div>
+          <div class="brands-slider__item"><img src="/img/brands/bmw.svg" alt="BMW"></div>
+          <div class="brands-slider__item"><img src="/img/brands/mercedes.svg" alt="Mercedes-Benz"></div>
+          <div class="brands-slider__item"><img src="/img/brands/porsche.svg" alt="Porsche"></div>
+          <div class="brands-slider__item"><img src="/img/brands/skoda.svg" alt="Skoda"></div>
+          <div class="brands-slider__item"><img src="/img/brands/volkswagen.svg" alt="Volkswagen"></div>
+          <!-- Можно добавить больше логотипов -->
+        </div>
+      </div>
+    </section>
+    <!--#endregion brands-slider -->
     <!-- Здесь будут другие секции главной страницы -->
   </main>
 

@@ -1,39 +1,27 @@
-// filepath: /workspaces/test/css/style.scss
+/* filepath: /workspaces/test/css/style.css */
 /* Основные стили для проекта. Используйте SCSS синтаксис, если потребуется. */
 
 :root {
   --font-main: 'Inter', Arial, sans-serif;
   --color-primary: #1a1a1a;
-  --color-accent: #e30613;
+  --color-accent: #e30613; /* Красный акцентный цвет из макета */
   --color-bg: #fff;
   --color-text: #222;
+  --color-dark-bg: #101010; /* Темный фон для секций как на макете */
+  --color-card-bg: #1f1f1f; /* Фон для карточек на темном фоне */
+  --color-text-light: #fff;
+  --color-text-muted: #8c8c8c;
+  --color-blue-brand: #00529b; /* Синий для брендов */
 }
 
 body {
   font-family: var(--font-main);
   color: var(--color-text);
-  background: var(--color-bg);
+  background: var(--color-bg); /* По умолчанию светлый фон */
   margin: 0;
   padding: 0;
+  line-height: 1.6;
 }
-
-// Базовые брейкпоинты
-/* @mixin respond($breakpoint) {
-  @if $breakpoint == mobile {
-    @media (max-width: 767px) { @content; }
-  } @else if $breakpoint == tablet {
-    @media (min-width: 768px) and (max-width: 1199px) { @content; }
-  } @else if $breakpoint == desktop {
-    @media (min-width: 1200px) { @content; }
-  }
-} */
-
-// Пример использования миксина
-// .block {
-//   @include respond(mobile) {
-//     ...
-//   }
-// }
 
 /* Стили для header-компонента */
 .header {
@@ -42,8 +30,8 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   position: sticky;
   top: 0;
-  z-index: 100;
-  padding: 0.5rem 0; /* Небольшой вертикальный паддинг */
+  z-index: 1000; /* Увеличил z-index на всякий случай */
+  padding: 0.5rem 0; 
 }
 .header__container {
   max-width: 1200px;
@@ -56,7 +44,7 @@ body {
 
 .header__left {
   display: flex;
-  flex-direction: column; /* Лого и рейтинг друг под другом */
+  flex-direction: column; 
   align-items: flex-start;
 }
 
@@ -64,15 +52,15 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #fff; /* Цвет логотипа */
+  color: #fff; 
   font-weight: bold;
-  font-size: 1.5rem; /* Размер для текстового лого */
+  font-size: 1.5rem; 
 }
 .header__logo-text {
   /* Стили для текстового лого, если изображение недоступно */
 }
 .header__logo-img {
-  height: 40px; /* или другая высота согласно макету */
+  height: 40px; 
   width: auto;
   display: block;
 }
@@ -82,7 +70,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8rem;
-  color: #ccc; /* Цвет для рейтинга */
+  color: #ccc; 
   margin-top: 0.25rem;
 }
 .header__rating-yandex {
@@ -93,7 +81,7 @@ body {
   text-decoration: none;
 }
 .header__rating-yandex-icon {
-  height: 12px; /* Размер иконки Яндекса */
+  height: 12px; 
   width: auto;
 }
 .header__rating-yandex:hover {
@@ -104,12 +92,12 @@ body {
 .header__right {
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* Пространство между элементами в правой части */
+  gap: 1.5rem; 
 }
 
 .header__nav {
-  /* flex: 1 1 auto; */ /* Убрано, чтобы не растягивать */
-  /* margin-left: 2rem; */ /* Убрано */
+  /* flex: 1 1 auto; */ 
+  /* margin-left: 2rem; */ 
 }
 .header__menu {
   display: flex;
@@ -119,7 +107,7 @@ body {
   padding: 0;
 }
 .header__menu-link {
-  color: #fff; /* Белый цвет ссылок */
+  color: #fff; 
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
@@ -127,7 +115,7 @@ body {
 }
 .header__menu-link:hover,
 .header__menu-link.is-active {
-  color: var(--color-accent); /* Акцентный цвет для активной/ховер ссылки */
+  color: var(--color-accent); 
 }
 
 .header__phone {
@@ -135,7 +123,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  white-space: nowrap; /* Чтобы телефон не переносился */
+  white-space: nowrap; 
 }
 .header__phone:hover {
   color: var(--color-accent);
@@ -153,7 +141,7 @@ body {
 .header__burger-line {
   width: 24px;
   height: 3px;
-  background: #fff; /* Белые линии для бургера */
+  background: #fff; 
   border-radius: 2px;
   display: block;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -171,7 +159,7 @@ body {
 }
 
 
-// Мобильное меню
+/* Мобильное меню */
 @media (max-width: 991px) { /* Изменен брейкпоинт для более раннего появления бургера */
   .header__nav {
     display: none;
@@ -235,9 +223,9 @@ body {
 
 /* Стили для footer-компонента */
 .footer {
-  background: #181818;
+  background: #101010; /* Темный фон как на макете */
   color: #fff;
-  padding: 2rem 0 1rem 0;
+  padding: 3rem 0 1rem 0; /* Увеличил верхний паддинг */
   font-size: 1rem;
 }
 .footer__container {
@@ -250,23 +238,61 @@ body {
   gap: 2rem;
   padding: 0 1rem;
 }
-.footer__info {
-  flex: 1 1 200px;
+.footer__info { /* Блок с лого и рейтингом в футере */
+  flex: 1 1 250px;
 }
 .footer__logo {
   display: inline-block;
   margin-bottom: 1rem;
+  /* Тут будет большой логотип VAG VOSTOK AUTO GROUP */
 }
-.footer__logo-img {
-  height: 32px;
+.footer__logo-img { /* Для основного лого в футере */
+  height: auto; /* Будет зависеть от SVG */
+  max-width: 200px; /* Примерно */
+  margin-bottom: 1rem;
+}
+.footer__rating { /* Повторение блока рейтинга из шапки, если нужно */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+.footer__rating-yandex {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #ccc;
+  text-decoration: none;
+}
+.footer__rating-yandex-icon {
+  height: 14px;
   width: auto;
 }
-.footer__copyright {
-  font-size: 0.9rem;
-  color: #aaa;
+.footer__rating-yandex:hover {
+  color: #fff;
 }
-.footer__nav {
-  flex: 1 1 200px;
+
+.footer__copyright {
+  font-size: 0.8rem; /* Мельче копирайт */
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.footer__nav-columns { /* Контейнер для колонок меню */
+  flex: 2 1 500px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.footer__nav-col { /* Отдельная колонка меню */
+  flex: 1 1 150px;
+}
+.footer__nav-title {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1.1rem;
 }
 .footer__menu {
   list-style: none;
@@ -274,17 +300,18 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem; /* Немного увеличил гэп */
 }
 .footer__menu-link {
-  color: #fff;
+  color: #ccc; /* Светло-серые ссылки */
   text-decoration: none;
   transition: color 0.2s;
+  font-size: 0.95rem;
 }
 .footer__menu-link:hover {
   color: var(--color-accent);
 }
-.footer__contacts {
+.footer__contacts { /* Этот блок может быть не нужен, если контакты в колонках */
   flex: 1 1 200px;
   display: flex;
   flex-direction: column;
@@ -292,7 +319,7 @@ body {
 }
 .footer__phone,
 .footer__email {
-  color: #fff;
+  color: #ccc;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -301,100 +328,212 @@ body {
   color: var(--color-accent);
 }
 
-// Адаптивность
+/* Адаптивность футера */
+@media (max-width: 991px) {
+  .footer__nav-columns {
+    flex-direction: column; /* Колонки друг под другом на планшете */
+    gap: 1.5rem;
+  }
+}
 @media (max-width: 767px) {
   .footer__container {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center; /* Центрируем все на мобилке */
+    text-align: center;
     gap: 1.5rem;
   }
   .footer__info,
-  .footer__nav,
+  .footer__nav-columns,
+  .footer__nav-col,
   .footer__contacts {
     flex: 1 1 100%;
+    align-items: center;
+  }
+  .footer__menu {
+    align-items: center;
   }
 }
 
 /* Стили для hero-блока */
 .hero {
-  background: linear-gradient(90deg, #fff 60%, #f5f5f5 100%);
-  padding: 3rem 0 2rem 0;
+  background-color: var(--color-dark-bg); /* Темный фон */
+  /* background-image: url('/img/hero-background.jpg'); */ /* Путь к фоновому изображению */
+  background-size: cover;
+  background-position: center;
+  color: var(--color-text-light);
+  padding: 6rem 0 4rem 0; /* Паддинги сверху и снизу */
+  position: relative;
+  min-height: 70vh; /* Минимальная высота, чтобы было видно фон */
+  display: flex;
+  flex-direction: column; /* Чтобы статс бар был внизу */
+  justify-content: center; /* Центрируем основной контент */
+}
+.hero__background { /* Если нужен отдельный элемент для фона с псевдоэлементами */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0,0,0,0.3); */ /* Затемнение, если нужно */
+  z-index: 1;
 }
 .hero__container {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
   padding: 0 1rem;
+  position: relative;
+  z-index: 2; /* Контент поверх фона */
+  text-align: left; /* Текст слева по макету */
 }
 .hero__content {
-  flex: 1 1 50%;
+  max-width: 600px; /* Ограничиваем ширину текстового блока */
 }
 .hero__title {
-  font-size: 2.5rem;
+  font-size: 2.8rem; /* Размер из макета */
   font-weight: 700;
-  margin: 0 0 1rem 0;
-  color: var(--color-primary);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
-.hero__subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  color: #444;
-}
-.hero__button {
-  margin-top: 1rem;
-}
-.hero__image {
-  flex: 1 1 40%;
+.hero__actions {
   display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap; /* Перенос кнопок на мобильных */
+}
+.button { /* Общие стили для кнопок */
+  display: inline-flex; /* Для выравнивания иконки и текста */
   align-items: center;
   justify-content: center;
-}
-.hero__img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-// Кнопка
-.button {
-  display: inline-block;
-  padding: 0.75em 2em;
-  border-radius: 4px;
-  font-size: 1.1rem;
+  padding: 0.8em 1.8em;
+  border-radius: 8px; /* Скругленные углы как на макете */
+  font-size: 1rem; /* Базовый размер шрифта кнопки */
   font-weight: 600;
   text-decoration: none;
-  background: #eee;
-  color: var(--color-primary);
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  text-align: center;
 }
+.button__icon {
+  margin-right: 0.5em;
+  width: 20px; /* Размер иконки в кнопке */
+  height: 20px;
+}
+
 .button--primary {
   background: var(--color-accent);
   color: #fff;
+  border-color: var(--color-accent);
 }
 .button--primary:hover,
 .button--primary:focus {
-  background: #b8000d;
+  background: #b8000d; /* Темнее при ховере */
+  border-color: #b8000d;
 }
 
-// Адаптивность
-@media (max-width: 767px) {
-  .hero__container {
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
+.button--outline {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+.button--outline:hover,
+.button--outline:focus {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.hero__button-repair {
+  min-width: 220px; /* Минимальная ширина для основной кнопки */
+}
+.hero__button-whatsapp {
+  min-width: 220px;
+}
+
+.hero__stats-container { /* Контейнер для позиционирования блока статистики */
+  position: absolute;
+  bottom: 2rem; /* Отступ снизу */
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}
+.hero__stats {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-around; /* Распределяем элементы */
+  flex-wrap: wrap;
+  gap: 1rem; /* Пространство между блоками статистики */
+}
+.hero__stat-item {
+  background: rgba(0,0,0,0.5); /* Полупрозрачный фон */
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 150px; /* Минимальная ширина для элемента статистики */
+}
+.hero__stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+.hero__stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #ccc;
+}
+.hero__stat-item--contacts .hero__stat-label {
+  font-size: 0.75rem; /* Мельче для контактов */
+}
+
+
+/* Адаптивность Hero */
+@media (max-width: 991px) {
+  .hero {
+    padding: 4rem 0 3rem 0;
+    min-height: auto; /* Убираем мин высоту на планшетах */
   }
   .hero__title {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
   }
-  .hero__subtitle {
-    font-size: 1rem;
+  .hero__stats-container {
+    position: static; /* Статистика идет потоком */
+    margin-top: 2rem;
+    padding-bottom: 1rem; /* Отступ снизу для статистики */
+  }
+  .hero__stats {
+    justify-content: center; /* Центрируем элементы статистики */
+  }
+  .hero__stat-item {
+    flex-basis: 45%; /* По два элемента в ряд */
   }
 }
+
+@media (max-width: 767px) {
+  .hero {
+    text-align: center; /* Центрируем текст на мобильных */
+  }
+  .hero__content {
+    max-width: 100%;
+  }
+  .hero__title {
+    font-size: 1.8rem;
+  }
+  .hero__actions {
+    flex-direction: column; /* Кнопки друг под другом */
+    align-items: center;
+  }
+  .hero__button-repair, .hero__button-whatsapp {
+    width: 100%; /* Кнопки на всю ширину */
+    max-width: 300px;
+  }
+  .hero__stat-item {
+    flex-basis: 80%; /* Один элемент статистики в ряд */
+    min-width: 250px;
+  }
+}
+
 
 /* Стили для секции услуг и карточек */
 .services {
@@ -451,7 +590,7 @@ body {
   color: #444;
 }
 
-// Адаптивность
+/* Адаптивность услуг */
 @media (max-width: 767px) {
   .services__list {
     flex-direction: column;
@@ -522,7 +661,7 @@ body {
   font-weight: 500;
 }
 
-// Адаптивность
+/* Адаптивность акций */
 @media (max-width: 767px) {
   .promos__list {
     flex-direction: column;
@@ -559,9 +698,9 @@ body {
   justify-content: center;
   flex-wrap: wrap;
 }
-// Переиспользуем promo-card из главной
+/* Переиспользуем promo-card из главной */
 
-// Адаптивность
+/* Адаптивность страницы акций */
 @media (max-width: 767px) {
   .promos-page__list {
     flex-direction: column;
@@ -653,7 +792,7 @@ body {
   color: var(--color-accent);
 }
 
-// Адаптивность
+/* Адаптивность контактов */
 @media (max-width: 767px) {
   .contacts__content {
     flex-direction: column;
@@ -729,7 +868,7 @@ body {
   font-size: 1rem;
 }
 
-// Адаптивность для страницы машин
+/* Адаптивность для страницы машин */
 @media (max-width: 767px) {
   .cars-page__list {
     grid-template-columns: 1fr; /* Одна колонка на мобильных */
@@ -752,12 +891,12 @@ body {
 
 .button:hover {
   /* Общий ховер для кнопок, если не переопределен */
-  background: #ddd;
+  /* background: #ddd; */ /* Закомментировал, т.к. есть более специфичные ховеры */
 }
-.button--primary:hover,
-.button--primary:focus {
-  background: #b8000d; /* Уже определено */
-}
+/* .button--primary:hover,
+.button--primary:focus { */ /* Уже определено выше */
+  /* background: #b8000d;  */
+/* } */
 
 .contacts__input.is-error {
   border-color: var(--color-accent);
