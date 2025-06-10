@@ -909,3 +909,619 @@ body {
 /* Убедимся, что все пути к шрифтам и изображениям корректны */
 /* Шрифты подключены через Google Fonts в HTML */
 /* Иконки SVG - пути должны быть вида /img/icon-name.svg или /img/icons/sprite.svg#icon-id */
+
+/* Общие стили для секций */
+.section {
+  padding: 3rem 0; /* Стандартный отступ для секций */
+}
+.section--dark {
+  background-color: var(--color-dark-bg);
+  color: var(--color-text-light);
+}
+.section--light-gray {
+  background-color: #f5f5f5; /* Светло-серый фон */
+}
+
+.container { /* Общий контейнер, если еще не определен глобально с нужными параметрами */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-title {
+  font-size: 2.2rem; /* Размер заголовка секции */
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 2.5rem; /* Отступ снизу */
+  color: var(--color-primary);
+  text-align: center;
+  text-transform: uppercase; /* По макету заголовки часто в верхнем регистре */
+}
+.section-title--light {
+  color: var(--color-text-light);
+}
+
+/* Стили для секции "Преимущества" (Strengths) */
+.strengths {
+  background-color: #fff; /* Белый фон для этой секции */
+}
+.strengths__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.strength-card {
+  background-color: #f9f9f9; /* Слегка отличный фон для карточек */
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.strength-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+.strength-card__icon {
+  width: 60px; /* Размер иконки */
+  height: 60px;
+  margin-bottom: 1rem;
+  /* fill: var(--color-accent); Если SVG иконки это поддерживают */
+}
+.strength-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+}
+.strength-card__desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* Адаптивность для "Преимущества" */
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .strengths__grid {
+    grid-template-columns: 1fr; /* Одна колонка на мобильных */
+    gap: 1.5rem;
+  }
+  .strength-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Стили для секции "Услуги" (Services) с табами */
+.services {
+  /* background-color: var(--color-bg); /* По умолчанию светлый фон */
+}
+/* .services__title уже покрывается .section-title, но можно выровнять по левому краю */
+.services__title {
+  text-align: center;
+}
+
+.tabs {
+  /* Общие стили для контейнера табов */
+}
+.tabs__nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap; /* Перенос табов на мобильных */
+}
+.tabs__button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  margin: 0 0.25rem 0.5rem 0.25rem; /* Отступы для переноса */
+}
+.tabs__button:hover {
+  color: var(--color-primary);
+}
+.tabs__button.is-active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  font-weight: 600;
+}
+
+.tabs__content {
+  /* Стили для контейнера с панелями табов */
+}
+.tabs__panel {
+  display: none; /* Скрываем все панели по умолчанию */
+  animation: fadeIn 0.5s ease-in-out; /* Простая анимация появления */
+}
+.tabs__panel.is-active {
+  display: block; /* Показываем активную панель */
+}
+.tabs__panel-title { /* Заголовок внутри таб-панели */
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center; /* Или слева, если нужно */
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem; /* Уменьшил гэп по сравнению с преимуществами */
+}
+.service-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden; /* Чтобы скруглить изображение, если оно выходит за рамки */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+.service-item__image {
+  width: 100%;
+  height: 180px; /* Фиксированная высота для изображений услуг */
+  object-fit: cover;
+  display: block;
+}
+.service-item__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 1rem 1rem 0.5rem 1rem;
+}
+.service-item__price {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  margin: 0 1rem 1rem 1rem;
+}
+.service-item__button {
+  margin: 0 1rem 1rem 1rem;
+  width: calc(100% - 2rem); /* Кнопка на ширину контентной части */
+}
+.button--outline-dark { /* Новый стиль кнопки для светлого фона */
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.button--outline-dark:hover,
+.button--outline-dark:focus {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Адаптивность для "Услуги" */
+@media (max-width: 767px) {
+  .tabs__nav {
+    justify-content: flex-start; /* Табы слева на мобильных */
+  }
+  .tabs__button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    flex-grow: 1; /* Растягиваем табы, если их мало */
+    text-align: center;
+  }
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+  .tabs__panel-title {
+    font-size: 1.3rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Удалены пустые правила для .services, .tabs, .tabs__content */
+
+/* Стили для секции "Акции и спецпредложения" (Offers) */
+/* .section--dark уже применен в HTML, так что фон и основной цвет текста будут темными */
+.offers__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.offer-card {
+  background-color: var(--color-card-bg); /* Фон карточки на темном фоне */
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.offer-card__image {
+  width: 100%;
+  height: 200px; /* Фиксированная высота для изображений акций */
+  object-fit: cover;
+  display: block;
+}
+
+.offer-card__content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Чтобы контент занимал все доступное место */
+}
+
+.offer-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.offer-card__desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #ccc; /* Светло-серый для описания на темном фоне */
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Чтобы описание растягивалось, если кнопка внизу */
+}
+
+.offer-card__timer {
+  display: flex;
+  justify-content: flex-start; /* Таймер слева */
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.timer__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0,0,0,0.2); /* Фон для элементов таймера */
+  padding: 0.5rem;
+  border-radius: 4px;
+  min-width: 50px; /* Минимальная ширина для каждого блока таймера */
+}
+
+.timer__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  line-height: 1.1;
+}
+
+.timer__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #aaa; /* Еще более светлый для подписей */
+}
+
+.offer-card__button {
+  /* Стили для кнопки уже есть (.button, .button--primary) */
+  /* Можно добавить margin-top: auto; если кнопка всегда должна быть внизу */
+  margin-top: auto; /* Прижимает кнопку к низу карточки */
+  width: 100%;
+}
+
+/* Адаптивность для "Акции" */
+@media (max-width: 767px) {
+  .offers__grid {
+    grid-template-columns: 1fr; /* Одна колонка на мобильных */
+  }
+  .offer-card__title {
+    font-size: 1.15rem;
+  }
+  .offer-card__timer {
+    gap: 0.5rem;
+    flex-wrap: wrap; /* Позволяем элементам таймера переноситься */
+    justify-content: center;
+  }
+  .timer__item {
+    min-width: 45px;
+    padding: 0.4rem;
+  }
+  .timer__value {
+    font-size: 1.3rem;
+  }
+}
+
+/* Стили для секции "О нас" (About) */
+.about {
+  background-color: var(--color-bg); /* Светлый фон */
+}
+
+.about__container {
+  display: flex;
+  align-items: flex-start; /* Выравнивание по верху для контента и изображения */
+  gap: 2.5rem;
+}
+
+.about__content {
+  flex: 1 1 55%; /* Текстовый блок занимает больше места */
+}
+
+/* .about__title уже стилизован через .section-title, но можно выровнять по левому краю */
+.about .section-title {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.about__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444; /* Чуть темнее, чем основной текст по умолчанию */
+  margin-bottom: 1.5rem;
+}
+
+.about__text:last-of-type {
+  margin-bottom: 2rem; /* Больший отступ перед кнопкой */
+}
+
+.about__button {
+  /* Стили .button и .button--primary уже есть */
+  font-size: 1.05rem;
+  padding: 0.9em 2em;
+}
+
+.about__image-block {
+  flex: 1 1 40%; /* Блок с изображением и лицензиями */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about__image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  display: block;
+}
+
+.about__licenses {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.about__licenses-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.about__licenses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+}
+
+.about__licenses-grid a {
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about__licenses-grid a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.about__licenses-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Адаптивность для "О нас" */
+@media (max-width: 991px) { /* Планшеты */
+  .about__container {
+    flex-direction: column;
+    align-items: center; /* Центрируем контент на планшетах */
+    gap: 2rem;
+  }
+  .about__content,
+  .about__image-block {
+    flex-basis: auto; /* Сбрасываем flex-basis */
+    width: 100%;
+    max-width: 600px; /* Ограничиваем ширину для читаемости */
+  }
+  .about .section-title {
+    text-align: center; /* Заголовок по центру на планшетах и мобильных */
+  }
+  .about__content {
+    text-align: center; /* Текст по центру */
+  }
+}
+
+@media (max-width: 767px) { /* Мобильные */
+  .about .section-title {
+    font-size: 1.6rem; /* Уменьшаем заголовок */
+  }
+  .about__text {
+    font-size: 0.95rem;
+  }
+  .about__licenses-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.75rem;
+  }
+  .about__licenses {
+    padding: 1rem;
+  }
+}
+
+/* Стили для секции "Отзывы" (Reviews) */
+/* .section--light-gray уже применен в HTML */
+
+/* .reviews__title уже стилизован через .section-title */
+
+.reviews__slider {
+  /* Swiper-container стилизуется самим Swiper, но можно добавить обертке отступы */
+  padding-bottom: 3rem; /* Место для пагинации и кнопок */
+  position: relative; /* Для позиционирования кастомных кнопок */
+}
+
+.review-card {
+  background-color: #fff; /* Белый фон для карточек отзывов */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  /* height: 100%;  // Если нужно выровнять высоту слайдов, Swiper это делает */
+}
+
+.review-card__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.review-card__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+  border: 2px solid var(--color-accent);
+}
+
+.review-card__author-info {
+  /* Контейнер для имени и источника */
+}
+
+.review-card__author-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.review-card__source {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.review-card__rating {
+  font-size: 1.2rem;
+  color: #f39c12; /* Золотой цвет для звезд */
+  margin-bottom: 0.75rem;
+}
+
+.review-card__text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+  flex-grow: 1; /* Чтобы текст занимал доступное пространство */
+}
+
+/* Стилизация элементов управления Swiper.js для отзывов */
+.reviews-slider__pagination {
+  bottom: 0px !important; /* Перемещаем пагинацию ниже слайдов */
+  position: absolute; /* Убедимся, что позиционирование корректно */
+  width: 100%;
+  left: 0;
+}
+.reviews-slider__pagination .swiper-pagination-bullet {
+  background-color: var(--color-text-muted);
+  opacity: 0.7;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+.reviews-slider__pagination .swiper-pagination-bullet-active {
+  background-color: var(--color-accent);
+  opacity: 1;
+}
+
+.reviews-slider__button-prev,
+.reviews-slider__button-next {
+  color: var(--color-accent); /* Цвет стрелок */
+  width: 30px; /* Уменьшаем размер кнопок */
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
+.reviews-slider__button-prev:hover,
+.reviews-slider__button-next:hover {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+.reviews-slider__button-prev::after,
+.reviews-slider__button-next::after {
+  font-size: 1rem !important; /* Уменьшаем размер иконок стрелок */
+  font-weight: bold;
+}
+
+.reviews-slider__button-prev {
+  left: -10px; /* Позиционирование кнопок */
+}
+.reviews-slider__button-next {
+  right: -10px;
+}
+
+/* Адаптивность для "Отзывы" */
+@media (max-width: 767px) {
+  .reviews__slider {
+    padding-bottom: 3.5rem; /* Больше места для пагинации на мобильных */
+  }
+  .review-card {
+    padding: 1.25rem;
+  }
+  .review-card__avatar {
+    width: 50px;
+    height: 50px;
+  }
+  .review-card__author-name {
+    font-size: 1rem;
+  }
+  .review-card__text {
+    font-size: 0.9rem;
+  }
+  .reviews-slider__button-prev,
+  .reviews-slider__button-next {
+    /* Можно скрыть кнопки на очень маленьких экранах или уменьшить еще */
+    width: 28px;
+    height: 28px;
+    display: none; /* Скрываем кнопки на мобильных, оставляем только пагинацию */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .reviews-slider__button-prev {
+    left: 0px;
+  }
+  .reviews-slider__button-next {
+    right: 0px;
+  }
+}
